@@ -109,7 +109,7 @@ public class MainPanel extends JPanel {
 		
 		int larghezzaSchermo=1280,altezzaSchermo=720;
 		
-		int larghezzaBarra=15,altezzaBarra=140;
+		int larghezzaBarra=20,altezzaBarra=100;
 		int BarraAx=20,BarraAy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraA=10;
 		
@@ -167,11 +167,11 @@ public class MainPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			if(inizio){
-				pallaX += velocitaBarraX*5;
-				pallaY += velocitaBarraY*5;
+				pallaX += velocitaBarraX*6;
+				pallaY += velocitaBarraY*6;
 			}
-				BarraAy += velocitaBarraA*5;
-				BarraBy += velocitaBarraB*5;
+				BarraAy += velocitaBarraA*6;
+				BarraBy += velocitaBarraB*6;
 				
 				
 				if(BarraAy<0 || BarraAy+altezzaBarra>altezzaSchermo){
@@ -213,8 +213,8 @@ public class MainPanel extends JPanel {
 				}
 				
 				if(s.PunteggioP1 == 10 && s.PunteggioP2 == 10){
-						s.PunteggioP1=7;
-						s.PunteggioP2=7;
+						s.PunteggioP1=9;
+						s.PunteggioP2=9;
 				}
 				
 				if(s.PunteggioP1 == 11){
