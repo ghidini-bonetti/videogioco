@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -35,27 +34,27 @@ public class MainPanel extends JPanel {
 		
 		public punteggio(){
                         this.setPreferredSize(new Dimension(larghezzaP,altezzaP));
-			this.setBorder(BorderFactory.createLineBorder(Color.cyan));
-			this.setBackground(Color.BLUE);	
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			this.setBackground(Color.WHITE);	
 		}
 		
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			g.setColor(Color.WHITE);
+			g.setColor(Color.BLACK);
 			g.setFont(new Font("Times New Roman",Font.PLAIN,48));
 			g.drawString("PING - PONG", larghezzaP/2- 120, altezzaP/2-50);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.BLACK);
 			g.setFont(new Font("Times New Roman",Font.PLAIN,36));
 			g.drawString("Giocatore 1", 30, 120);
 			
 			g.drawString("Giocatore 2", larghezzaP-190, 120);
 			
-			g.setColor(Color.green);
+			g.setColor(Color.BLACK);
 			g.fill3DRect(75, 150, 60, 50,true);
 			g.fill3DRect(larghezzaP-80-60, 150, 60, 50,true);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.BLACK);
 			g.drawRect(75, 150, 60, 50);
 			g.drawRect(larghezzaP-80-60, 150, 60, 50);
 			
@@ -63,37 +62,37 @@ public class MainPanel extends JPanel {
 			g.drawString(Integer.toString(PunteggioP1), 90, 185);
 			g.drawString(Integer.toString(PunteggioP2), larghezzaP-80-45, 185);
 			
-			g.setColor(Color.white);
+			g.setColor(Color.BLACK);
 			g.setFont(new Font("Times New Roman",Font.PLAIN,30));
 			g.drawString("Giocatore 1", larghezzaP/2-250, 115);
 			
 			g.drawString("Giocatore 2", larghezzaP/2-250, 175);
 			
 			for(int i=1;i<=3;i++){
-				g.setColor(Color.GREEN);
+				g.setColor(Color.BLACK);
 				g.fill3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
 				g.fill3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
-				g.setColor(Color.white);
+				g.setColor(Color.WHITE);
 				g.draw3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
 				g.draw3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
 			}
 			
 			for(int i=1;i<=3;i++){
-				g.setColor(Color.white);
+				g.setColor(Color.WHITE);
 				g.setFont(new Font("Times New Roman",Font.PLAIN,46));
 				g.drawString(Integer.toString(setP1[i-1]), larghezzaP/2-170+70*i+15, 125);
 				g.drawString(Integer.toString(setP2[i-1]), larghezzaP/2-170+70*i+15, 185);
 				
 			}
 			
-			g.setColor(Color.GREEN);
+			g.setColor(Color.BLACK);
 			g.fill3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
 			g.fill3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
-			g.setColor(Color.white);
+			g.setColor(Color.WHITE);
 			g.draw3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
 			g.draw3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
 			
-			g.setColor(Color.white);
+			g.setColor(Color.WHITE);
 			g.setFont(new Font("Times New Roman",Font.PLAIN,46));
 			g.drawString(Integer.toString(gameP1), larghezzaP/2-190+70*4+55, 125);
 			g.drawString(Integer.toString(gameP2), larghezzaP/2-190+70*4+55, 185);
@@ -109,7 +108,7 @@ public class MainPanel extends JPanel {
 		
 		int larghezzaSchermo=1280,altezzaSchermo=720;
 		
-		int larghezzaBarra=20,altezzaBarra=100;
+		int larghezzaBarra=20,altezzaBarra=120;
 		int BarraAx=20,BarraAy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraA=10;
 		
@@ -118,7 +117,7 @@ public class MainPanel extends JPanel {
 		
 		int raggioPalla=30;
 		int pallaX=larghezzaSchermo/2-raggioPalla/2,pallaY=altezzaSchermo/2-raggioPalla/2;
-		int velocitaBarraX=2,velocitaBarraY=2;
+		double velocitaBarraX=1,velocitaBarraY=1;
 		
 		int set=0;
 		
@@ -136,8 +135,8 @@ public class MainPanel extends JPanel {
 		public pannelloGioco(){
 			t= new Timer(1,this);
 			this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
-			this.setBorder(BorderFactory.createLineBorder(Color.black));
-			this.setBackground(Color.CYAN);
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			this.setBackground(Color.BLACK);
 			this.addKeyListener(this);
 			setFocusable(true);
 			this.setFocusTraversalKeysEnabled(false);
@@ -147,12 +146,12 @@ public class MainPanel extends JPanel {
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
-			g.setColor(Color.orange);
+			g.setColor(Color.WHITE);
 			g.fill3DRect(BarraAx, BarraAy, larghezzaBarra, altezzaBarra,true);
 			
 			g.fill3DRect(BarraBx, BarraBy, larghezzaBarra, altezzaBarra,true);
 			
-			g.setColor(Color.blue);
+			g.setColor(Color.RED);
 			g.fillOval(pallaX, pallaY, raggioPalla, raggioPalla);
 			
 			if(!inizio){
@@ -167,11 +166,11 @@ public class MainPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			if(inizio){
-				pallaX += velocitaBarraX*6;
-				pallaY += velocitaBarraY*6;
+				pallaX += velocitaBarraX;
+				pallaY += velocitaBarraY;
 			}
-				BarraAy += velocitaBarraA*6;
-				BarraBy += velocitaBarraB*6;
+				BarraAy += velocitaBarraA*2;
+				BarraBy += velocitaBarraB*2;
 				
 				
 				if(BarraAy<0 || BarraAy+altezzaBarra>altezzaSchermo){
@@ -254,26 +253,30 @@ public class MainPanel extends JPanel {
 				if(barraA.intersects(palla)){
 					velocitaBarraX = -velocitaBarraX;
 					collisioneA = true;
-				}
+                                        velocitaBarraX = velocitaBarraX*1.2;
+                                        velocitaBarraY = velocitaBarraY*1.2;
+                                        }
 				}
 				
 				if(!collisioneB){
 				if(barraB.intersects(palla)){
 					velocitaBarraX = -velocitaBarraX;
 					collisioneB=true;
-				}
+                                        velocitaBarraX = velocitaBarraX*1.2;
+                                        velocitaBarraY = velocitaBarraY*1.2;
+                                       	}
 				}
 				
 				if(collisioneA){
 					if(!palla.intersects(barraA)){
-						collisioneA=false;
+                                        collisioneA=false;
 					}
 				}
 				
 				if(collisioneB){
 					if(!palla.intersects(barraB)){
-						collisioneB=false;
-					}
+                                        collisioneB=false;
+                          		}
 				}
 				
 			repaint();
@@ -367,15 +370,15 @@ public class MainPanel extends JPanel {
 		public void keyTyped(KeyEvent arg0) {}
 		
 		public void drawWinner(Graphics g){
-			g.setColor(Color.green);
+			g.setColor(Color.WHITE);
 			g.setFont(new Font("Times New Roman",Font.ITALIC,42));
 			g.drawString(giocatoreVincente +" vince " + Integer.toString(s.gameP1) + " - " + Integer.toString(s.gameP2), larghezzaSchermo/2-200, altezzaSchermo/2 - 100);
-			g.setColor(Color.ORANGE);
+			g.setColor(Color.WHITE);
 			g.drawString("Premi [ESC] per uscire dal gioco", larghezzaSchermo/2-280, altezzaSchermo/2 - 50);
 		}
 		
 		public void drawStartGame(Graphics g){
-			g.setColor(Color.orange);
+			g.setColor(Color.WHITE);
 			g.setFont(new Font("Times new roman",Font.ITALIC,42));
 			g.drawString("Premi [SPAZIO] per giocare", larghezzaSchermo/2-280, altezzaSchermo/2 - 100);
 		}
