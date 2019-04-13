@@ -60,7 +60,7 @@ public class MainPanel extends JPanel {
 			
 			g.setColor(Color.WHITE);
 			g.drawString(Integer.toString(PunteggioP1), 90, 185);
-			g.drawString(Integer.toString(PunteggioP2), larghezzaP-80-45, 185);
+			g.drawString(Integer.toString(PunteggioP2), larghezzaP-80-45, 185);     
 			
 			g.setColor(Color.BLACK);
 			g.setFont(new Font("Times New Roman",Font.PLAIN,30));
@@ -109,15 +109,17 @@ public class MainPanel extends JPanel {
 		int larghezzaSchermo=1280,altezzaSchermo=720;
 		
 		int larghezzaBarra=20,altezzaBarra=120;
-		int BarraAx=20,BarraAy=altezzaSchermo/2 - altezzaBarra/2;
+		int BarraAx=10;
+                int BarraAy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraA=10;
 		
-		int BarraBx=larghezzaSchermo-30,BarraBy=altezzaSchermo/2 - altezzaBarra/2;
+		int BarraBx=larghezzaSchermo-30;
+                int BarraBy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraB=10;
 		
 		int raggioPalla=30;
 		int pallaX=larghezzaSchermo/2-raggioPalla/2,pallaY=altezzaSchermo/2-raggioPalla/2;
-		double velocitaBarraX=1,velocitaBarraY=1;
+		double velocitaBarraX=10,velocitaBarraY=10;
 		
 		int set=0;
 		
@@ -169,8 +171,8 @@ public class MainPanel extends JPanel {
 				pallaX += velocitaBarraX;
 				pallaY += velocitaBarraY;
 			}
-				BarraAy += velocitaBarraA*2;
-				BarraBy += velocitaBarraB*2;
+				BarraAy += velocitaBarraA*5;
+				BarraBy += velocitaBarraB*5;
 				
 				
 				if(BarraAy<0 || BarraAy+altezzaBarra>altezzaSchermo){
@@ -253,8 +255,6 @@ public class MainPanel extends JPanel {
 				if(barraA.intersects(palla)){
 					velocitaBarraX = -velocitaBarraX;
 					collisioneA = true;
-                                        velocitaBarraX = velocitaBarraX*1.2;
-                                        velocitaBarraY = velocitaBarraY*1.2;
                                         }
 				}
 				
@@ -262,8 +262,6 @@ public class MainPanel extends JPanel {
 				if(barraB.intersects(palla)){
 					velocitaBarraX = -velocitaBarraX;
 					collisioneB=true;
-                                        velocitaBarraX = velocitaBarraX*1.2;
-                                        velocitaBarraY = velocitaBarraY*1.2;
                                        	}
 				}
 				

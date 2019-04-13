@@ -17,7 +17,7 @@ public class MainGame extends JFrame {
 		MainGame frame = new MainGame("Ping Pong");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.orange);
+		panel.setBackground(Color.RED);
 		MainPanel mp = new MainPanel();
 		panel.add(mp);
 		Container c = frame.getContentPane();
