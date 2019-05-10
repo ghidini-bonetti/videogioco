@@ -15,7 +15,7 @@ import javax.swing.Timer;
 public class MainPanel extends JPanel {
 	punteggio s;
 	
-	public MainPanel(){
+	public MainPanel(){                                                 //Creazione del pannello di gioco e del pannello punteggio
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS) );
 		s = new punteggio();
 		pannelloGioco p = new pannelloGioco();
@@ -23,76 +23,74 @@ public class MainPanel extends JPanel {
 		this.add(p);
 	}
 	
-	public class punteggio extends JPanel {
+	public class punteggio extends JPanel {                             //Dimensioni del pannello punteggio
 		
 		int larghezzaP=1280,altezzaP=220;
 		int PunteggioP1=0, PunteggioP2=0;
-		int setP1[] = new int[3];
-		int setP2[] = new int[3];
+		int setP1[] = new int[3];                                   //Vettori che determinano il numero dei game a 3
+		int setP2[] = new int[3];                                   //Vettori che determinano il numero dei game a 3
 		
-		int gameP1=0, gameP2=0;
+		int gameP1=0, gameP2=0;                                     //Iniziallizzare i game a 0
 		
-		public punteggio(){
-                        this.setPreferredSize(new Dimension(larghezzaP,altezzaP));
-			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			this.setBackground(Color.WHITE);	
+		public punteggio(){                                                       
+                        this.setPreferredSize(new Dimension(larghezzaP,altezzaP));              //A differenza del setSize(), offre le dimensioni perfette
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));            // 
+			this.setBackground(Color.WHITE);                                        //Colore dello sfonde del pannello punteggio
 		}
 		
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                //Modifica colore, font, posizione della scritta PING PONG
 			g.setFont(new Font("Times New Roman",Font.PLAIN,48));
 			g.drawString("PING - PONG", larghezzaP/2- 120, altezzaP/2-50);
 			
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                 //Modifica colore, font, posizione della scritta Giocatore 1
 			g.setFont(new Font("Times New Roman",Font.PLAIN,36));
 			g.drawString("Giocatore 1", 30, 120);
+			g.drawString("Giocatore 2", larghezzaP-190, 120);                        //Giocatore2
 			
-			g.drawString("Giocatore 2", larghezzaP-190, 120);
-			
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                 //Modifica del colore e della posizione delle celle laterali relative al punteggio
 			g.fill3DRect(75, 150, 60, 50,true);
 			g.fill3DRect(larghezzaP-80-60, 150, 60, 50,true);
 			
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                 //Modifica del colore e della posizione delle celle laterali relative al punteggio
 			g.drawRect(75, 150, 60, 50);
 			g.drawRect(larghezzaP-80-60, 150, 60, 50);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.WHITE);                                                 //Colore della scritta del punteggio della scritta laterale
 			g.drawString(Integer.toString(PunteggioP1), 90, 185);
 			g.drawString(Integer.toString(PunteggioP2), larghezzaP-80-45, 185);     
 			
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                 //Colore dei giocatori relativo ai Set e Game 
 			g.setFont(new Font("Times New Roman",Font.PLAIN,30));
 			g.drawString("Giocatore 1", larghezzaP/2-250, 115);
-			
 			g.drawString("Giocatore 2", larghezzaP/2-250, 175);
 			
-			for(int i=1;i<=3;i++){
+			for(int i=1;i<=3;i++){                                                   //Colore delle cele relative ai Set dei due giocatori
 				g.setColor(Color.BLACK);
 				g.fill3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
 				g.fill3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
-				g.setColor(Color.WHITE);
+				g.setColor(Color.WHITE);                                         //Colore dei bordi delle celle relative ai set del giocatore
 				g.draw3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
 				g.draw3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
 			}
 			
 			for(int i=1;i<=3;i++){
-				g.setColor(Color.WHITE);
+				g.setColor(Color.WHITE);                                         //Colore del punteggio dei Set e Game del giocatore uno e due
 				g.setFont(new Font("Times New Roman",Font.PLAIN,46));
 				g.drawString(Integer.toString(setP1[i-1]), larghezzaP/2-170+70*i+15, 125);
 				g.drawString(Integer.toString(setP2[i-1]), larghezzaP/2-170+70*i+15, 185);
 				
 			}
 			
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);                                                //Colore delle celle relative ai Game del giocatore
 			g.fill3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
 			g.fill3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
-			g.setColor(Color.WHITE);
+			g.setColor(Color.WHITE);                                                //Colore dei bordi delle celle relative ai Gsme del giocatore
 			g.draw3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
 			g.draw3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.WHITE);                                                //Colore del punteggio dei giocatori nella cella del game
 			g.setFont(new Font("Times New Roman",Font.PLAIN,46));
 			g.drawString(Integer.toString(gameP1), larghezzaP/2-190+70*4+55, 125);
 			g.drawString(Integer.toString(gameP2), larghezzaP/2-190+70*4+55, 185);
