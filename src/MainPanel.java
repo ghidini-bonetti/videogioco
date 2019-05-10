@@ -30,7 +30,7 @@ public class MainPanel extends JPanel {
 		int setP1[] = new int[3];
 		int setP2[] = new int[3];
 		
-		int gameP1=0,gameP2=0;
+		int gameP1=0, gameP2=0;
 		
 		public punteggio(){
                         this.setPreferredSize(new Dimension(larghezzaP,altezzaP));
@@ -102,8 +102,6 @@ public class MainPanel extends JPanel {
 		
 	}
 	
-	
-	
 	public class pannelloGioco extends JPanel implements ActionListener,KeyListener{
 		
 		int larghezzaSchermo=1280,altezzaSchermo=720;
@@ -157,11 +155,11 @@ public class MainPanel extends JPanel {
 			g.fillOval(pallaX, pallaY, raggioPalla, raggioPalla);
 			
 			if(!inizio){
-				drawStartGame(g);
+				ChiStartaMatch(g);
 			}
 			
 			if(vincitore){
-				drawWinner(g);
+				ChiVince(g);
 				t.stop();
 			}
 		}
@@ -283,24 +281,26 @@ public class MainPanel extends JPanel {
 		}
 		@Override
 		public void keyPressed(KeyEvent e) {
-			int key = e.getKeyCode();
+			int chiave = e.getKeyCode();
 			
-			if(key == KeyEvent.VK_SPACE){
+			if(chiave == KeyEvent.VK_SPACE){
 				inizio=true;
 			}
 			
-			if(key == KeyEvent.VK_ESCAPE){
+			if(chiave == KeyEvent.VK_ESCAPE){
+                            
+                            
 				System.exit(0);
 			}
 			
-			if(key == KeyEvent.VK_UP){
+			if(chiave == KeyEvent.VK_UP){
 				if(BarraBy > 0){
 				velocitaBarraB = -2;
 			}else
 				velocitaBarraB =0;
 			}
 			
-			if(key == KeyEvent.VK_DOWN){
+			if(chiave == KeyEvent.VK_DOWN){
 					if(BarraBy+altezzaBarra < altezzaSchermo){
 					velocitaBarraB = 2;
 				}else
@@ -308,7 +308,7 @@ public class MainPanel extends JPanel {
 			}
 			
 				
-			if(key == KeyEvent.VK_W){
+			if(chiave == KeyEvent.VK_W){
 				if(BarraAy > 0 ){
 				velocitaBarraA = -2;
 			}else
@@ -316,14 +316,14 @@ public class MainPanel extends JPanel {
 			}
 			
 			
-			if(key == KeyEvent.VK_S){
+			if(chiave == KeyEvent.VK_S){
 					if(BarraAy+altezzaBarra < altezzaSchermo){
 					velocitaBarraA = 2;
 				}else
 					velocitaBarraA = 0;
 			}
 				
-			if(key == KeyEvent.VK_R){
+			if(chiave == KeyEvent.VK_R){
 					 
 					 BarraAx=20;BarraAy= altezzaSchermo/2 - altezzaBarra/2;
 					 velocitaBarraA=0;
@@ -356,18 +356,18 @@ public class MainPanel extends JPanel {
 			}
 		@Override
 		public void keyReleased(KeyEvent e) {
-			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN){
+			int chiave = e.getKeyCode();
+			if(chiave == KeyEvent.VK_UP || chiave == KeyEvent.VK_DOWN){
 				velocitaBarraB=0;
 			}
-			if(key == KeyEvent.VK_W || key == KeyEvent.VK_S){
+			if(chiave == KeyEvent.VK_W || chiave == KeyEvent.VK_S){
 				velocitaBarraA=0;
 			}	
 		}
 		@Override
 		public void keyTyped(KeyEvent arg0) {}
 		
-		public void drawWinner(Graphics g){
+		public void ChiVince(Graphics g){
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Times New Roman",Font.ITALIC,42));
 			g.drawString(giocatoreVincente +" vince " + Integer.toString(s.gameP1) + " - " + Integer.toString(s.gameP2), larghezzaSchermo/2-200, altezzaSchermo/2 - 100);
@@ -375,7 +375,7 @@ public class MainPanel extends JPanel {
 			g.drawString("Premi [ESC] per uscire dal gioco", larghezzaSchermo/2-280, altezzaSchermo/2 - 50);
 		}
 		
-		public void drawStartGame(Graphics g){
+		public void ChiStartaMatch(Graphics g){
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Times new roman",Font.ITALIC,42));
 			g.drawString("Premi [SPAZIO] per giocare", larghezzaSchermo/2-280, altezzaSchermo/2 - 100);
