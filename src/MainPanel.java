@@ -96,15 +96,13 @@ public class MainPanel extends JPanel {
 			g.drawString(Integer.toString(gameP2), larghezzaP/2-190+70*4+55, 185);
 			
 		}
-		
-		
-	}
+        }
 	
 	public class pannelloGioco extends JPanel implements ActionListener,KeyListener{
 		
 		int larghezzaSchermo=1280,altezzaSchermo=720;
 		
-		int larghezzaBarra=20,altezzaBarra=120;
+		int larghezzaBarra=20,altezzaBarra=140;
 		int BarraAx=10;
                 int BarraAy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraA=10;
@@ -132,9 +130,9 @@ public class MainPanel extends JPanel {
 		
 		public pannelloGioco(){
 			t= new Timer(1,this);
-			this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
-			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			this.setBackground(Color.BLACK);
+			this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));   //A differenza del setSize(), offre le dimensioni perfette
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));             //
+			this.setBackground(Color.BLACK);                                         //Colore dello sfondo del campo da gioco
 			this.addKeyListener(this);
 			setFocusable(true);
 			this.setFocusTraversalKeysEnabled(false);
@@ -144,12 +142,11 @@ public class MainPanel extends JPanel {
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.WHITE);                                                 //Colore della barra 
 			g.fill3DRect(BarraAx, BarraAy, larghezzaBarra, altezzaBarra,true);
-			
 			g.fill3DRect(BarraBx, BarraBy, larghezzaBarra, altezzaBarra,true);
 			
-			g.setColor(Color.RED);
+			g.setColor(Color.RED);                                                   //COlore della palla
 			g.fillOval(pallaX, pallaY, raggioPalla, raggioPalla);
 			
 			if(!inizio){
@@ -162,7 +159,7 @@ public class MainPanel extends JPanel {
 			}
 		}
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent e1) {                                  //Azioni di palla e barra
 			if(inizio){
 				pallaX += velocitaBarraX;
 				pallaY += velocitaBarraY;
@@ -363,7 +360,7 @@ public class MainPanel extends JPanel {
 			}	
 		}
 		@Override
-		public void keyTyped(KeyEvent arg0) {}
+		public void keyTyped(KeyEvent e1) {}
 		
 		public void ChiVince(Graphics g){
 			g.setColor(Color.WHITE);
