@@ -1,16 +1,6 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class MainPanel extends JPanel {
 	punteggio s;
@@ -34,75 +24,77 @@ public class MainPanel extends JPanel {
 		
 		public punteggio(){                                                       
                         this.setPreferredSize(new Dimension(larghezzaP,altezzaP));              //A differenza del setSize(), offre le dimensioni perfette
-			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));            // 
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));            //Colore del bordo della sezione del Punteggio
 			this.setBackground(Color.WHITE);                                        //Colore dello sfonde del pannello punteggio
 		}
 		
+                
+                @Override
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			g.setColor(Color.BLACK);                                                //Modifica colore, font, posizione della scritta PING PONG
 			g.setFont(new Font("Times New Roman",Font.PLAIN,48));
-			g.drawString("PING - PONG", larghezzaP/2- 120, altezzaP/2-50);
+			g.drawString("PING - PONG", 1280/2-120, 220/2-50);
 			
 			g.setColor(Color.BLACK);                                                 //Modifica colore, font, posizione della scritta Giocatore 1
 			g.setFont(new Font("Times New Roman",Font.PLAIN,36));
 			g.drawString("Giocatore 1", 30, 120);
-			g.drawString("Giocatore 2", larghezzaP-190, 120);                        //Giocatore2
+			g.drawString("Giocatore 2", 1280-190, 120);                        //Giocatore2
 			
 			g.setColor(Color.BLACK);                                                 //Modifica del colore e della posizione delle celle laterali relative al punteggio
 			g.fill3DRect(75, 150, 60, 50,true);
-			g.fill3DRect(larghezzaP-80-60, 150, 60, 50,true);
+			g.fill3DRect(1280-80-60, 150, 60, 50,true);
 			
 			g.setColor(Color.BLACK);                                                 //Modifica del colore e della posizione delle celle laterali relative al punteggio
 			g.drawRect(75, 150, 60, 50);
-			g.drawRect(larghezzaP-80-60, 150, 60, 50);
+			g.drawRect(1280-80-60, 150, 60, 50);
 			
 			g.setColor(Color.WHITE);                                                 //Colore della scritta del punteggio della scritta laterale
 			g.drawString(Integer.toString(PunteggioP1), 90, 185);
-			g.drawString(Integer.toString(PunteggioP2), larghezzaP-80-45, 185);     
+			g.drawString(Integer.toString(PunteggioP2), 1280-80-45, 185);     
 			
 			g.setColor(Color.BLACK);                                                 //Colore dei giocatori relativo ai Set e Game 
 			g.setFont(new Font("Times New Roman",Font.PLAIN,30));
-			g.drawString("Giocatore 1", larghezzaP/2-250, 115);
-			g.drawString("Giocatore 2", larghezzaP/2-250, 175);
+			g.drawString("Giocatore 1", 1280/2-250, 115);
+			g.drawString("Giocatore 2", 1280/2-250, 175);
 			
 			for(int i=1;i<=3;i++){                                                   //Colore delle cele relative ai Set dei due giocatori
 				g.setColor(Color.BLACK);
-				g.fill3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
-				g.fill3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
+				g.fill3DRect(1280/2-170+70*i, 80, 70, 60,true);
+				g.fill3DRect(1280/2-170+70*i, 140, 70, 60,true);
 				g.setColor(Color.WHITE);                                         //Colore dei bordi delle celle relative ai set del giocatore
-				g.draw3DRect(larghezzaP/2-170+70*i, 80, 70, 60,true);
-				g.draw3DRect(larghezzaP/2-170+70*i, 140, 70, 60,true);
+				g.draw3DRect(1280/2-170+70*i, 80, 70, 60,true);
+				g.draw3DRect(1280/2-170+70*i, 140, 70, 60,true);
 			}
 			
 			for(int i=1;i<=3;i++){
 				g.setColor(Color.WHITE);                                         //Colore del punteggio dei Set e Game del giocatore uno e due
 				g.setFont(new Font("Times New Roman",Font.PLAIN,46));
-				g.drawString(Integer.toString(setP1[i-1]), larghezzaP/2-170+70*i+15, 125);
-				g.drawString(Integer.toString(setP2[i-1]), larghezzaP/2-170+70*i+15, 185);
+				g.drawString(Integer.toString(setP1[i-1]), 1280/2-170+70*i+15, 125);
+				g.drawString(Integer.toString(setP2[i-1]), 1280/2-170+70*i+15, 185);
 				
 			}
 			
 			g.setColor(Color.BLACK);                                                //Colore delle celle relative ai Game del giocatore
-			g.fill3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
-			g.fill3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
+			g.fill3DRect(1280/2-190+80*4, 80, 70, 60,true);
+			g.fill3DRect(1280/2-190+80*4, 140, 70, 60,true);
 			g.setColor(Color.WHITE);                                                //Colore dei bordi delle celle relative ai Gsme del giocatore
-			g.draw3DRect(larghezzaP/2-190+80*4, 80, 70, 60,true);
-			g.draw3DRect(larghezzaP/2-190+80*4, 140, 70, 60,true);
+			g.draw3DRect(1280/2-190+80*4, 80, 70, 60,true);
+			g.draw3DRect(1280/2-190+80*4, 140, 70, 60,true);
 			
 			g.setColor(Color.WHITE);                                                //Colore del punteggio dei giocatori nella cella del game
 			g.setFont(new Font("Times New Roman",Font.PLAIN,46));
-			g.drawString(Integer.toString(gameP1), larghezzaP/2-190+70*4+55, 125);
-			g.drawString(Integer.toString(gameP2), larghezzaP/2-190+70*4+55, 185);
+			g.drawString(Integer.toString(gameP1), 1280/2-190+70*4+55, 125);
+			g.drawString(Integer.toString(gameP2), 1280/2-190+70*4+55, 185);
 			
 		}
         }
 	
 	public class pannelloGioco extends JPanel implements ActionListener,KeyListener{
 		
-		int larghezzaSchermo=1280,altezzaSchermo=720;
+		int larghezzaSchermo=1280,altezzaSchermo=500;
 		
-		int larghezzaBarra=20,altezzaBarra=140;
+		int larghezzaBarra=15,altezzaBarra=100;
 		int BarraAx=10;
                 int BarraAy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraA=10;
@@ -111,9 +103,10 @@ public class MainPanel extends JPanel {
                 int BarraBy=altezzaSchermo/2 - altezzaBarra/2;
 		int velocitaBarraB=10;
 		
-		int raggioPalla=30;
+		int raggioPalla=20;
 		int pallaX=larghezzaSchermo/2-raggioPalla/2,pallaY=altezzaSchermo/2-raggioPalla/2;
 		double velocitaBarraX=10,velocitaBarraY=10;
+                
 		
 		int set=0;
 		
@@ -158,6 +151,8 @@ public class MainPanel extends JPanel {
 				t.stop();
 			}
 		}
+                
+                
 		@Override
 		public void actionPerformed(ActionEvent e1) {                                  //Azioni di palla e barra
 			if(inizio){
@@ -283,9 +278,7 @@ public class MainPanel extends JPanel {
 			}
 			
 			if(chiave == KeyEvent.VK_ESCAPE){
-                            
-                            
-				System.exit(0);
+                                System.exit(0);
 			}
 			
 			if(chiave == KeyEvent.VK_UP){
@@ -314,41 +307,12 @@ public class MainPanel extends JPanel {
 			if(chiave == KeyEvent.VK_S){
 					if(BarraAy+altezzaBarra < altezzaSchermo){
 					velocitaBarraA = 2;
-				}else
+			}else
 					velocitaBarraA = 0;
-			}
-				
-			if(chiave == KeyEvent.VK_R){
-					 
-					 BarraAx=20;BarraAy= altezzaSchermo/2 - altezzaBarra/2;
-					 velocitaBarraA=0;
-					
-					 BarraBx=larghezzaSchermo-20;BarraBy=altezzaSchermo/2 - altezzaBarra/2;
-					 velocitaBarraB=0;
-					
-					
-					 pallaX=larghezzaSchermo/2-raggioPalla/2;pallaY=altezzaSchermo/2-raggioPalla/2;
-					 velocitaBarraX=2;velocitaBarraY=2;
-					
-					 set=0;
-					
-					 inizio=false;
-					 vincitore=false;
-					
-					 giocatoreVincente=null;
-					 
-					 s.PunteggioP1=0;
-					 s.PunteggioP2=0;
-					 s.gameP1=0;
-					 s.gameP2=0;
-					 for(int i=0;i<3;i++){
-						 s.setP1[i]=0;
-						 s.setP2[i]=0;
-					 }
-					 repaint();
-					 s.repaint();
-				}
-			}
+			}	
+		}
+                
+                
 		@Override
 		public void keyReleased(KeyEvent e) {
 			int chiave = e.getKeyCode();
@@ -359,6 +323,8 @@ public class MainPanel extends JPanel {
 				velocitaBarraA=0;
 			}	
 		}
+                
+                
 		@Override
 		public void keyTyped(KeyEvent e1) {}
 		

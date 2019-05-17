@@ -1,10 +1,5 @@
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class MainGame extends JFrame {
 	
@@ -22,8 +17,8 @@ public class MainGame extends JFrame {
 		panel.add(mp);
 		Container c = frame.getContentPane();
 		c.add(panel);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
+		frame.pack();                          //Racchiude i componenti all'interno della finistra
+		frame.setLocationRelativeTo(null);     //Apre la finestra al centro dello schermo
 		frame.setVisible(true);
 
 	}
